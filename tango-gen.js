@@ -29,9 +29,6 @@ function selecteFileChangeed() {
     strlen.forEach(element => {
       // 按分隔符分割
       var Tangos = element.split("、");
-      if(Tangos[0].length==0){
-        continue;
-      }
       // 补充数量
       if (Tangos.length < 4) {
         Tangos.push(null);
