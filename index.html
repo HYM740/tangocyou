@@ -1,30 +1,123 @@
 <!DOCTYPE html>
 <html lang="zh_CN">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    body {
+      background-color: rgb(216, 216, 216);
+    }
+    .w100 {
+      width: 100%;
+    }
+    main {
+      margin: 16px auto;
+      flex-direction: column;
+    }
+    aside {
+      margin: 8px;
+      flex-direction: column;
+    }
+    .center {
+      margin: auto;
+    }
+    .block {
+      display: block;
+    }
+    .flex {
+      display: flex;
+    }
+    .left {
+      float: left;
+    }
+    #next {
+      width: 96px;
+    }
+    @media screen and (min-width: 512px){
+      main {
+        width: 100%;
+      }
+      aside {
+        width: 100%;
+      }
+    }
+    @media screen and (min-width: 768px){
+      main {
+        width: 60%;
+        max-width: 768px;
+      }
+      aside {
+        width: 30%;
+        max-width: 256px;
+      }
+    }
+  </style>
+  <title>简易单词</title>
 </head>
+
 <body>
-  <input type="file" id="fileinput">
-  <input type="file" id="json">
-  <table border="1">
-    <tr>
-      <td>单词</td><td id="tango"></td>
-    </tr>
-    <tr>
-      <td>读音</td><td id="yumigata"></td>
-    </tr>
-    <tr>
-      <td>含义</td><td id="imi"></td>
-    </tr>
-    <tr>
-      <td>例句</td><td id="rei"></td>
-    </tr>
-  </table>
-  <button id="next">Next</button>
+  <div class="center">
+    <main class="flex left">
+      <h1 class="center">黄油猫的简易单词表</h1>
+      <h2 class="center">随机单词</h2>
+      <table border="1">
+        <tr>
+          <td>单词</td>
+          <td id="tango"></td>
+        </tr>
+        <tr>
+          <td>读音</td>
+          <td id="yumigata"></td>
+        </tr>
+        <tr>
+          <td>含义</td>
+          <td id="imi"></td>
+        </tr>
+        <tr>
+          <td>例句</td>
+          <td id="rei"></td>
+        </tr>
+      </table>
+      <button class="center" id="next">Next</button>
+    </main>
+    <aside class="flex left">
+      <div class="input">
+        <div class="input-area">
+          txt文件转换为json文件
+          <input type="file" id="fileinput" accept=".txt">
+        </div>
+        <div class="input-area">
+          导入本地json文件作为单词库
+          <input type="file" id="json" accept=".json">
+        </div>
+        <div id="tangoselect">
+          选择已有单词库
+          <select name="tangos" id="ts">
+            <option value="N1">N1</option>
+            <option value="N2">N2</option>
+            <option value="N3">N3</option>
+            <option value="N4">N4</option>
+            <option value="N5">N5</option>
+            <option value="D1">大学日语1</option>
+            <option value="D2">大学日语2</option>
+            <option value="D3">大学日语3</option>
+            <option value="D4">大学日语4</option>
+            <option value="GZ">高中日语</option>
+            <option value="CZ">初中日语</option>
+          </select>
+        </div>
+      </div>
+    </aside>
+  </div>
+  
   <!-- <script src="tango-gen.js"></script>  -->
   <script src="script.js"></script>
 </body>
+
 </html>
