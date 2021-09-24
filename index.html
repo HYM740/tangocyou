@@ -1,123 +1,109 @@
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      margin: 0px;
-      padding: 0px;
-    }
-    body {
-      background-color: rgb(216, 216, 216);
-    }
-    .w100 {
-      width: 100%;
-    }
-    main {
-      margin: 16px auto;
-      flex-direction: column;
-    }
-    aside {
-      margin: 8px;
-      flex-direction: column;
-    }
-    .center {
-      margin: auto;
-    }
-    .block {
-      display: block;
-    }
-    .flex {
-      display: flex;
-    }
-    .left {
-      float: left;
-    }
-    #next {
-      width: 96px;
-    }
-    @media screen and (min-width: 512px){
-      main {
-        width: 100%;
-      }
-      aside {
-        width: 100%;
-      }
-    }
-    @media screen and (min-width: 768px){
-      main {
-        width: 60%;
-        max-width: 768px;
-      }
-      aside {
-        width: 30%;
-        max-width: 256px;
-      }
-    }
-  </style>
-  <title>简易单词</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄油酱的简易单词表</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/reactive.css">
+    <link rel="stylesheet" href="./css/animate.min.css">
 </head>
 
 <body>
-  <div class="center">
-    <main class="flex left">
-      <h1 class="center">黄油猫的简易单词表</h1>
-      <h2 class="center">随机单词</h2>
-      <table border="1">
-        <tr>
-          <td>单词</td>
-          <td id="tango"></td>
-        </tr>
-        <tr>
-          <td>读音</td>
-          <td id="yumigata"></td>
-        </tr>
-        <tr>
-          <td>含义</td>
-          <td id="imi"></td>
-        </tr>
-        <tr>
-          <td>例句</td>
-          <td id="rei"></td>
-        </tr>
-      </table>
-      <button class="center" id="next">Next</button>
-    </main>
-    <aside class="flex left">
-      <div class="input">
-        <div class="input-area">
-          txt文件转换为json文件
-          <input type="file" id="fileinput" accept=".txt">
-        </div>
-        <div class="input-area">
-          导入本地json文件作为单词库
-          <input type="file" id="json" accept=".json">
-        </div>
-        <div id="tangoselect">
-          选择已有单词库
-          <select name="tangos" id="ts">
-            <option value="N1">N1</option>
-            <option value="N2">N2</option>
-            <option value="N3">N3</option>
-            <option value="N4">N4</option>
-            <option value="N5">N5</option>
-            <option value="D1">大学日语1</option>
-            <option value="D2">大学日语2</option>
-            <option value="D3">大学日语3</option>
-            <option value="D4">大学日语4</option>
-            <option value="GZ">高中日语</option>
-            <option value="CZ">初中日语</option>
-          </select>
-        </div>
-      </div>
-    </aside>
-  </div>
-  
-  <!-- <script src="tango-gen.js"></script>  -->
-  <script src="script.js"></script>
+    <section class="main animate animate__bounceIn">
+        <!-- Header -->
+        <header>
+            <div class="title">简易单词表</div>
+        </header>
+
+        <!-- Body -->
+        <section class="body">
+            <!-- wordInfo -->
+            <aside class="wordInfo">
+                <div>
+                    <!-- 单词展示 -->
+                    <ul>
+                        <li class="word">
+                            <label>单词</label>
+                            <div class="japanese">暴れる</div>
+                        </li>
+                        <li class="pronunciation">
+                            <label>读音</label>
+                            <div class="japanese"> [0]あばれる</div>
+                        </li>
+                        <li class="mean">
+                            <label>含义</label>
+                            <div class="chinese">[自动2]胡闹，乱闹；大显身手</div>
+                        </li>
+                        <li class="sentence">
+                            <label>例句</label>
+                            <div class="japanese">酔って暴れる。今日の試合では大いに暴れるぞ</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 进度调整 -->
+                <section class="btnGroup">
+                    <section class="progress">
+                        <div class="nowProgress"></div>
+                        <div class="progressNumber"><span>0</span>%</div>
+                    </section>
+                    <section>
+                        <button class="back">◀返回</button>
+                        <button class="next">继续▶</button>
+                    </section>
+                </section>
+
+            </aside>
+            <!-- wordInput -->
+            <aside class="wordInput">
+                <div>
+                    <!-- txtBtn -->
+                    <section class="txtBtn">
+                        <button title="选择本地TXT文件转换为JSON文件">转换 TXT 为 JSON</button>
+                    </section>
+                    <!-- xmlBtn 暂未开放 -->
+                    <section class="xmlBtn disableBtn">
+                        <button disabled title="选择本地XML文件转换为JSON文件">转换 XML 为 JSON</button>
+                    </section>
+                    <!-- jsonBtn -->
+                    <section class="jsonBtn">
+                        <button title="导入本地json文件作为单词库">导入JSON文件</button>
+                    </section>
+                    <!-- wordBank -->
+                    <section class="wordBank">
+                        <div>选择已有单词库</div>
+                        <select>
+                            <option value="">已导入</option>
+                            <option value="N1">N1</option>
+                            <option value="N2">N2</option>
+                            <option value="N3">N3</option>
+                            <option value="N4">N4</option>
+                            <option value="N5">N5</option>
+                            <option value="D1">大学日语1</option>
+                            <option value="D2">大学日语2</option>
+                            <option value="D3">大学日语3</option>
+                            <option value="D4">大学日语4</option>
+                            <option value="GZ">高中日语</option>
+                            <option value="CZ">初中日语</option>
+                        </select>
+                    </section>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+
+        </footer>
+    </section>
+
+
+
+
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
