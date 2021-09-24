@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "联盟综艺体";
+    src: url(../font/151号-联盟综艺体.ttf)
+}
+
+/* 全局设置 */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "联盟综艺体";
+    /* color: #177cb0; */
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.chinese{
+    font-family: '微软雅黑'!important;
+}
+.japanese{
+    font-family: 'Yu Gothic UI'!important;
+}
+/* 背景色 */
+body{
+    background-color: #def2e8;
+}
+
+/* 窗体 */
+.main{
+    width: 800px;
+    height: 400px;
+    position: absolute;
+    left: 0;right: 0;top: 0;bottom: 0;margin: auto;
+    background-color: rgba(18, 18, 18, 0.1);
+    border-radius: 30px;
+}
+
+
+/* Header */
+header{
+    width: 100%;
+    height: 80px;
+    margin-bottom: 20px;
+}
+header .title{
+    margin: 0 auto;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center;
+}
+
+/* Body */
+.body{
+    width: 90%;
+    height: 260px;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+/* wordInfo */
+.wordInfo{
+    width: 70%;
+    padding-left: 10px;
+}
+.wordInfo ul{
+    margin-top: 10px;
+}
+.wordInfo li{
+    display: flex;
+    height: 40px;
+   margin-top: 10px;
+    
+}
+/* wordInfo 标签 */
+.wordInfo li label{
+    font-size: 25px;
+    margin-right: 10px;
+
+    padding: 4px;
+    padding-top: 0px;
+    background-color: #2dcc70;
+    border-radius: 8px;
+    color: #def2e8;
+    white-space: nowrap;
+}
+/* wordInfo 单词展示 */
+.wordInfo li div{
+    font-size: 17px;
+}
+/* wordInfo 进度调整 */
+.wordInfo .btnGroup{
+    display: flex;
+    align-items: center;
+    margin-top: 18px;
+}
+.wordInfo .btnGroup button{
+    font-size: 20px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background:  linear-gradient(145deg, #d8d8d8, #acabab);
+    margin-left: 15px;
+}
+.wordInfo .btnGroup button:active{
+    background:  linear-gradient(145deg, #bbbbbb, #8f8f8f);
+}
+.wordInfo .btnGroup .progress{
+    position: relative;
+    display: block;
+    width: 300px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 30px;
+    background-color: #ccc;
+}
+.wordInfo .btnGroup .progress .nowProgress{
+    width: 0%;
+    height: 100%;
+    background: url(../img/progress.png);
+    transition: width 0.5s;
+}
+.wordInfo .btnGroup .progress .progressNumber{
+    position:absolute;
+    color: #fff;
+    font-size: 20px;
+    top: 40%;left: 50%;transform: translateX(-50%)translateY(-50%);
+}
+
+
+/* wordInput */
+.wordInput{
+    position: relative;
+    padding: 20px 0;
+    width: 30%;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+.wordInput::before{
+    content: "单词库";
+    position: absolute;
+    top: -18px;
+    left: 50%;transform: translateX(-50%);
+    background-color: #c9dbd2;
+    padding: 0 5px;
+    font-size: 25px;
+    text-align: center;
+}
+.wordInput section{
+    text-align: center;
+}
+/* wordInput 按钮配置 */
+.wordInput section button{
+    font-size: 20px;
+    padding: 4px;
+    padding-top: 0px;
+    border-radius: 8px;
+    border: none;
+    color: #def2e8;
+    background:  linear-gradient(145deg, #2dcc70, #28af62);
+    margin-top: 15px;
+}
+.wordInput section button:active{
+    background: linear-gradient(145deg, #249957, #1c7e47);
+}
+.wordInput section.disableBtn button{
+    background: linear-gradient(145deg,#b2b2b2, #979797);
+}
+.wordInput section.disableBtn button:active{
+    background: linear-gradient(145deg,#b2b2b2, #979797);
+}
+/* wordInput 数据库 */
+.wordInput .wordBank{
+    margin-top: 10px;
+    font-size: 20px;
+}
+.wordInput .wordBank select{
+    width: 50%;
+    text-align: center;
+    padding: 4px;
+    padding-top: 0px;
+    border-radius: 8px;
+    outline: none;
+}
+.wordInput .wordBank option{
+    padding: 4px;
+    padding-top: 0px;
+    border-radius: 8px;
+    text-align: center;
+}
+

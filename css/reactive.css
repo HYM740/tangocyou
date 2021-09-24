@@ -1,0 +1,42 @@
+@media (max-width: 800px) {
+    /* 窗体 */
+    .main{
+        width: 100%;
+        height: 705px;
+    }
+    .body{
+        flex-direction: column;
+    }
+    /* wordInfo */
+    .wordInfo{
+        width: 100%;
+    }
+    .wordInfo .btnGroup{
+        flex-direction: column;
+    }
+    .wordInfo .btnGroup button{
+        margin: 0;
+    }
+    .wordInfo .btnGroup button:nth-child(1){
+        margin-right: 50px;
+    }
+    .wordInfo .btnGroup .progress{
+        margin-bottom: 10px;
+    }
+    .wordInfo>div{
+        width: 80%;
+        margin: 0 auto;
+    }
+    /* wordInput */
+    .wordInput{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 40px;
+        
+    }
+    /* .wordInput>div{
+        width: 50%;
+        min-width: 350px;
+        margin: 0 auto;
+    } */
+}
