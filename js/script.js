@@ -37,7 +37,7 @@ function selectJson() {
             alert("尚不可用！");
             break;
         case "N2":
-            var url = "./js/tango.json";
+            var url = "./js/N2.json";
             request.open("get", url);
             request.send(null);
             request.onload = function () {
