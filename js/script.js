@@ -1,25 +1,58 @@
 //绑定网页元素
 var tango = document.querySelector("#tango");
-var yumigata = document.querySelector("#yumigata")
-var imi = document.querySelector("#imi")
-var rei = document.querySelector("#rei")
-var jsonfile = document.querySelector("#json")
-var nextBotton = document.querySelector("#next")
-// var ts = document.querySelector("#ts")
+var yumigata = document.querySelector("#yumigata");
+var imi = document.querySelector("#imi");
+var rei = document.querySelector("#rei");
+var jsonfile = document.querySelector("#json");
+var nextBotton = document.querySelector("#next");
+var ts = document.querySelector("#ts");
 var fileinput = document.querySelector("#fileinput");
 
 //定义数据
 var jsonstr;
 var tangocyou;
 var tangoindex = new Array();
-var index=0;
+var index = 0;
 //绑定事件
-document.querySelector("#tojson").addEventListener("click", () => { fileinput.click() })
-document.querySelector("#jsonBtn").addEventListener("click", () => { jsonfile.click() })
+document.querySelector("#tojson").addEventListener("click", () => { fileinput.click() });
+document.querySelector("#jsonBtn").addEventListener("click", () => { jsonfile.click() });
 jsonfile.addEventListener("change", reader);
 nextBotton.addEventListener("click", randomData);
 document.getElementById("fileinput").addEventListener("change", selecteFileChangeed);
-// ts.addEventListener("change",()=>console.log(ts.selectedIndex))
+ts.addEventListener("change", selectJson);
+
+function selectJson() {
+    var request = new XMLHttpRequest();
+    switch (ts.options[ts.selectedIndex].value) {
+        case "N1":
+        case "N3":
+        case "N4":
+        case "N5":
+        case "D1":
+        case "D2":
+        case "D3":
+        case "D4":
+        case "GZ":
+        case "CZ":
+            alert("尚不可用！");
+            break;
+        case "N2":
+            var url = "./js/tango.json";
+            request.open("get", url);
+            request.send(null);
+            request.onload = function () {
+                if (request.status == 200){
+                    tangocyou = JSON.parse(request.responseText);
+                    randomindex();
+                    randomData();
+                }
+            }
+            break;
+
+        default:
+            break;
+    }
+}
 
 function reader() {
     var reader = new FileReader();
@@ -27,19 +60,21 @@ function reader() {
     reader.onload = function fileReadCompleted() {
         jsonstr = reader.result;
         tangocyou = JSON.parse(jsonstr)
+        ts.style="display:none";
         randomindex();
+        randomData();
     }
 }
 function randomindex() {
     var i;
-    for(i=0;i<tangocyou.length;i++){
+    for (i = 0; i < tangocyou.length; i++) {
         tangoindex.push(i);
     }
-    for(i=0;i<tangocyou.length;i++){
-        var t =tangoindex[i];
+    for (i = 0; i < tangocyou.length; i++) {
+        var t = tangoindex[i];
         var target = Math.round(Math.random() * tangocyou.length);
         tangoindex[i] = tangoindex[target];
-        tangoindex[target]=t;
+        tangoindex[target] = t;
     }
     console.log(tangoindex);
 }
@@ -49,6 +84,10 @@ function randomData() {
     imi.innerHTML = tangocyou[tangoindex[index]].imi;
     rei.innerHTML = tangocyou[tangoindex[index]].rei;
     index++;
+    if(index>=tangocyou.length){
+        randomindex();
+        index=0;
+    }
 }
 //以下为Text文件转换为json文件相关
 //构造单词对象
